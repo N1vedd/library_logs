@@ -1,6 +1,32 @@
-<h1>hello {{pets.1|upper}}</h1>
-<h1>{{pets}}</h1>
-{% for pet in pets %}
-{{pet}}
-<br>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>add/remove</title>
+	<link rel="stylesheet" href="add.css" />
+</head>
+<body>
+	<form method="POST">
+		{{form.hidden_tag()}}
+		{{form.date.label(class)}}
+		{{form.date()}}<br><br>
+		{{form.name.label(class)}}
+		{{form.name()}}<br><br>
+		{{form.roll_no.label(class)}}
+		{{form.roll_no()}}<br><br>
+		{{form.designation.label(class)}}
+		{{form.designation()}}<br><br>
+		{{form.check_in.label(class)}}
+		{{form.check_in()}}<br><br>
+		{{form.submit()}}
+
+
+	</form>
+{%for our_user in form.check_in.errors%}
+{{our_user}}
 {% endfor %}
+<h1>hi{{name}}</h1>
+</body>
+</html>
