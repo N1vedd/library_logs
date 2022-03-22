@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/statistics.css') }}" />
+	<title>Statistics</title>
+</head>
+<body>
+<div class="main">
+<form method="POST",action="{{url_for('logs')}}">
+		{{form.hidden_tag()}}
+		{{form.s_date.label()}}<br>
+		{{form.s_date(class="form_input")}}<br><br>
+		{{form.e_date.label()}}<br>
+		{{form.e_date(class="form_input")}}<br><br>
+		{{form.submit()}}
+	</form>
+</div>
+
+</body>
+</html>

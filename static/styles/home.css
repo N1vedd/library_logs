@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&family=Staatliches&display=swap');
+
+
+:root {
+    --theme:green;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:black ;
+	color: white;
+	max-height: 100vh;
+	overflow-y: hidden;
+}
+.main{
+	padding-top: 130px;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+}
+
+#anim{
+	position: absolute;
+	width: 800px;
+	height: 800px;
+	bottom: -70px;
+	left: -50px;
+}
+
+
+#menu{
+	margin-right: 23%;
+	font-size: 140px;
+	font-family: 'Staatliches', cursive;
+	letter-spacing: 2px;
+
+}
+
+#menu_text{
+	border: 5px solid var(--theme);
+	color: white;
+	padding-left: 160px;
+	padding-right: 50px;
+	border-left: black;
+}
+
+#options{
+	margin-top: 160px;
+}
+.option{
+	cursor: pointer;
+	font-size: 60px;
+	font-family: 'League Spartan', sans-serif;
+	color: white;
+	text-decoration: none;
+}
+
+.no{
+    text-shadow: -2px 0 var(--theme), 0 2px var(--theme), 2px 0 var(--theme), 0 -2px var(--theme);
+    color: black;
+	font-size: 55px;
+	padding-right: 50px;
+	font-family: 'League Spartan', sans-serif;
+	font-weight: 900;
+}
+
+.opt_container{
+
+	padding-bottom: 20px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Statistics</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/stats.css') }}" />
+	<script type="text/javascript">
+		let datas= {{datas|safe}};
+		let dates= {{dates|safe}};
+
+</script>
+</head>
+<body>
+<div id="main">
+	<div class="header1">STATISTICS</div><br>
+	<div class="info">
+	Roll no = {{user_data[0]}}<br>
+	Entries = {{user_data[1]}} times  ,
+	Total time spent = {{total}} minutes  ,
+	Average Daily Usage = {{total/user_data[1]}} minutes
+	</div>
+
+</div>
+<div id=graph>
+	<canvas id="myChart"></canvas>
+</div>
+
+<script 
+src="https://cdn.jsdelivr.net/npm/chart.js"
+crossorigin="anonymous"
+referrerpolicy="no-refferer"
+></script>
+
+
+<script src="{{url_for('static',filename='styles/stats.js')}}"></script>
+
+</body>
+</html>
