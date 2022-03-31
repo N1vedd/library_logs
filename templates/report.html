@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Logs</title>
-	<link rel="stylesheet" href="{{ url_for('static',filename='styles/logs.css') }}" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logs</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/logs.css') }}" />
 </head>
 <body>
 
-	<div class="header">DATABASE LOGS</div>
+  <div class="header">DATABASE LOGS</div>
 <div id="tb">
 <table class="content-table">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Name</th>
       <th>Roll No</th>
+      <th>Name</th>
       <th>Designation</th>
-      <th>Check-In</th>
-      <th>Check-Out</th>
       <th>Time Spent</th>
 
     </tr>
   </thead>
   <tbody>
- {% for log in log_data %}
+ {% for i in range(l) %}
  <tr>
-      <td>{{log.date}}</td>
-      <td>{{log.name}}</td>
-      <td>{{log.roll_no}}</td>
-      <td>{{log.designation}}</td>
-      <td>{{log.check_in}}</td>
-      <td>{{log.check_out}}</td>
-      <td>{{log.time_spent}}</td>
+      <td>{{datas[i][0]}}</td>
+      <td>{{datas[i][1]}}</td>
+      <td>{{datas[i][2]}}</td>
+      <td>{{datas[i][3]}}</td>
 </tr>
 {% endfor %}
     
@@ -41,10 +35,10 @@
 </table>
 </div>
 <div id="download_div">
-	<button id="download" onclick="exportTableToCSV('members.csv')">DOWNLOAD AS CSV</button>
+  <button id="download" onclick="exportTableToCSV('members.csv')">DOWNLOAD AS CSV</button>
 </div>
 <script type="text/javascript">
-	function downloadCSV(csv, filename) {
+  function downloadCSV(csv, filename) {
     var csvFile;
     var downloadLink;
     csvFile = new Blob([csv], {type: "text/csv"});
@@ -54,8 +48,8 @@
     downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);
     downloadLink.click();
-		}
-	function exportTableToCSV(filename) {
+    }
+  function exportTableToCSV(filename) {
     var csv = [];
     var rows = document.querySelectorAll("table tr");
     for (var i = 0; i < rows.length; i++) {
@@ -67,7 +61,7 @@
         csv.push(row.join(","));        
     }
     downloadCSV(csv.join("\n"), filename);
-	}
+  }
 </script>
 </body>
 </html>

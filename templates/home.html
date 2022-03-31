@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Home</title>
 	<link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css') }}" />
 </head>
 <body>
@@ -20,7 +20,7 @@
 		<div class="opt_container"><span class="no">02</span><a class="option" href="{{url_for('update')}}">Punch In / Punch Out</a></div><br>
 		<div class="opt_container"><span class="no">03</span><a class="option" href="{{url_for('statistics')}}">Statistics</a></div><br>
 
-		<div class="opt_container"><span class="no">04</span><a class="option">Report Generator</a></div>
+		<div class="opt_container"><span class="no">04</span><a class="option" href="{{url_for('reports_info')}}">Report Generator</a></div>
 	</div>
 
 </div>

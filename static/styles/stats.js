@@ -1,8 +1,8 @@
 const ctx=document.getElementById('myChart').getContext("2d");
 
-let gradient = ctx.createLinearGradient(0,0,0,400);
-gradient.addColorStop(0,'rgba(19, 89, 16,0.77)');
-gradient.addColorStop(1,'rgba(19, 89, 16,0.8)');
+let gradient = ctx.createLinearGradient(0,0,0,750);
+gradient.addColorStop(0,'lime');
+gradient.addColorStop(0.9,'black');
 
 
 const labels = dates;

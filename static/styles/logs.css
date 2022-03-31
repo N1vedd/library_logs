@@ -92,4 +92,17 @@ overflow-x: hidden;
 	bottom: 0px;
 }
 
+#download_div{
+	display: flex;
+	justify-content: center;
+}
+#download{
+	cursor: pointer;
+	color: white;
+	background-color: black;
+	border-radius: 0.3rem;
+	border: solid 3px var(--theme);
+	font-size: 21px;
+	padding: 15px 10px;
 
+}
