@@ -53,6 +53,11 @@ class logsinfo(FlaskForm):
 	e_date = DateField("till",    validators = [DataRequired()])
 	submit = SubmitField("Submit",validators = [DataRequired()])
 
+class reportinfo(FlaskForm):
+	s_date = DateField("from",    validators = [DataRequired()])
+	e_date = DateField("till",    validators = [DataRequired()])
+	designation = SelectField(u'Designation', choices=[('student', 'Student'), ('staff', 'Staff')],validators = [DataRequired()])
+	submit = SubmitField("Submit",validators = [DataRequired()])
 
 
 @app.route('/')
@@ -158,7 +163,7 @@ def stats():
 			entries+=1
 		datas.append(total_time_spent)
 
-	return render_template("stats.html",datas=datas,dates=dates,user_data=[roll_no,entries],total=sum(datas))
+	return render_template("stats.html",datas=datas,dates=dates,user_data=[roll_no,entries],total_time=sum(datas),average=str(sum(datas)/len(datas))[:4])
 
 
 
@@ -190,10 +195,11 @@ def logs():
 
 @app.route('/reports_info',methods=["POST","GET"])
 def reports_info():
-	form=logsinfo()
+	form=reportinfo()
 	if form.validate_on_submit():
 		session['sdate'] = form.s_date.data
 		session['edate'] = form.e_date.data
+		session['desig'] = form.designation.data
 		return redirect(url_for('report'))
 	return render_template("report_info.html",form=form)
 
@@ -202,21 +208,29 @@ def reports_info():
 
 @app.route('/report')
 def report():
-	sdate    = session.get('sdate',None)
-	edate    = session.get('edate',None)
-	sdate    = datetime.strptime(sdate[:-4],'%a, %d %b %Y %H:%M:%S')
-	edate    = datetime.strptime(edate[:-4],'%a, %d %b %Y %H:%M:%S')
+	sdate = session.get('sdate',None)
+	edate = session.get('edate',None)
+	desig = session.get('desig',None)
+	sdate = datetime.strptime(sdate[:-4],'%a, %d %b %Y %H:%M:%S')
+	edate = datetime.strptime(edate[:-4],'%a, %d %b %Y %H:%M:%S')
 	query = db.session.query(log.roll_no.distinct().label("roll_no")).filter(log.date>=sdate,log.date<=edate)
 	rolls = [row.roll_no for row in query.all()]
-	datas=[]
+	datas = []
+	time  = []
 	for roll in rolls:
-		a=db.session.query(func.sum(log.time_spent).label('total_time'),log.name,log.designation).filter(log.roll_no==roll,log.date>=sdate,log.date<=edate)
+		a=db.session.query(func.sum(log.time_spent).label('total_time'),log.name,log.designation).filter(log.roll_no==roll,log.date>=sdate,log.date<=edate,log.designation==desig)
 		total_time = [row.total_time for row in a]
 		name = [row.name for row in a]
 		designation = [row.designation for row in a]
+		if name[0]==None:
+			continue
 		datas.extend([[roll,name[0],designation[0],total_time[0]]])
-	rolls,datas=zip(*sorted(zip(rolls,datas)))
-	datas=datas[::-1]
+		time.append(total_time[0])
+	try:
+		time,datas=zip(*sorted(zip(time,datas)))
+		datas=datas[::-1]
+	except:
+		pass
 	if len(datas)<10:
 		l=len(datas)
 	else:
