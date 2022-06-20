@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body{
+    
+    overflow: hidden;
+    margin-top: 5px;
+    font-size: large;
+    
+}
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+.table{
+    width: 100%;
+   
+}
+.table_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(240,240,240);
+    height: 110px;
+}
+.table_header p{
+    color: black;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+input{
+    padding: 10px 20px;
+    margin: 0 10px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 6px;
+    color: black;
+    
+}
+.table_section{
+    height: 650px;
+    overflow: auto;
+    
+   
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+    min-width: 1000px;
+    border-collapse: collapse;
+}
+thead th{
+    position: sticky ;
+    top: 0;
+    background-color:#f6f9fc;
+    color: #8493a5;
+    font-weight: bolder;
+    font-size: larger;
+}
+th,td{
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    word-break: break-all;
+    text-align: center;
+    
+}
+tr:nth-child(even) {  
+    background-color: #f6f9fc; 
+    color: black; 
+  }  
+
+.heading{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heading--1{
+    justify-content: center;
+    align-items: center;
+    margin-top: 55px;
+    margin-bottom: 25px;
+    font-size: 23px;
+}
+
+.heading--2{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
